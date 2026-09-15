@@ -48,7 +48,5 @@ $INSTALLATION_DIR/plugins/opensearch-security/tools/securityadmin.sh \
 '
 ```
 
-<img width="900" height="500" alt="image" src="https://github.com/user-attachments/assets/8f0c4b27-22f9-4f8b-954d-231e39c5a441" />
-
 **Important Note:**
 If changed the default indexer credentials, make sure to also update the `INDEXER_PASSWORD` variable inside `docker-compose.yml`[cite: 1]. If don't, the Filebeat pipeline and Dashboard will fail to connect and throw a `401 Unauthorized` error[cite: 1].
