@@ -19,7 +19,7 @@ NET START WazuhSvc
 
 After that, the agent finally shows up as **active**, both from the CLI and the dashboard:
 
-<img width="500" height="200" alt="image" src="https://github.com/user-attachments/assets/8bbaaf50-88ea-40f0-a5b4-576a9b16eb11" />
+<img width="500" height="180" alt="image" src="https://github.com/user-attachments/assets/8bbaaf50-88ea-40f0-a5b4-576a9b16eb11" />
 
 ```bash
 sudo docker exec -it single-node-wazuh.manager-1 /var/ossec/bin/agent_control -l
