@@ -21,6 +21,12 @@ An alert titled **"Administrators Group Changed"** showed up in Threat Hunting a
 ### Analysis 
 A member was added to a security enabled local group  at 2026-09-11T21:23:12.9071611Z. The subject account, `kalya`, made the change, adding a new member into the `Administrators` group on the `kalya` host. Wazuh flagged it as rule level 12, which is high severity because the Administrators group has full control over the system any addition to it is essentially a privilege escalation event. MITRE ATT&CK mapped this to T1484 (Domain Policy Modification), under the Defense Evasion and Privilege Escalation tactics.
 
+### Cleanup
+Once the account was confirmed as a test artifact, it was removed using
+```powershell
+net user soc_temp_intruder /delete
+```
+
 ## Scenario 2: Brute force logon attempts
 ### Attack simulation
 ```powershell
@@ -50,3 +56,7 @@ The FIM module picked up the change to the file and to a related registry key, l
 
 ### Analysis
 Wazuh's syscheck module detected a checksum change on a file inside `C:\Windows\System32\drivers\etc`, along with a related change to the registry key `SecureTimeLimits` registry key. These changes triggered rule IDs 594 and 750, both classified as level 5 (medium). This detection is related to File Integrity Monitoring (FIM), which works by comparing the current hash of files or registry entries with a previously recorded baseline. Therefore, even a small unauthorized modification, such as adding a single line to a text file, can be detected by Wazuh.
+
+### Cleanup
+The tampered file was removed and the directory was checked to confirm no other unexpected changes were left behind.
+
